@@ -5,7 +5,7 @@ const Todo = require('../models/Todo');
 
 
 
-router.post('/'[
+router.post('/', [
     check('text', 'укажите что нужно сделать').not().isEmpty()
 ], async (req,res) => {
 
@@ -20,7 +20,7 @@ router.post('/'[
             text: req.body.text
         });
 
-        const todo =await newtodo.save();
+        const todo = await newtodo.save();
 
         res.json(todo);
 
@@ -31,8 +31,8 @@ router.post('/'[
     
 });
 
-router.get('/', async (req,res) =>{
-    try{
+router.get('/', async (req,res) => {
+    try {
         const todo = await Todo.find().sort({ date:-1});
         res.json(todo);
 
